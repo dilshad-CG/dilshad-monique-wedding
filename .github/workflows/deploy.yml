@@ -24,7 +24,9 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run build
+      - run: npx tsc -b
+      # Force the GitHub Pages sub-path explicitly (overrides any config base)
+      - run: npx vite build --base=/dilshad-monique-wedding/
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
