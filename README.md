@@ -4,6 +4,11 @@ A luxurious, cinematic, mobile-first digital wedding invitation.
 
 **18 July 2026 · 2:00 PM · The Monarch Hotel, Johannesburg**
 
+### 🔗 Live site
+**https://dilshad-cg.github.io/dilshad-monique-wedding/**
+
+Hosted on GitHub Pages (auto-deploys on every push to `main` via GitHub Actions).
+
 ## Stack
 React · Vite · TypeScript · Tailwind CSS · Framer Motion · React Hook Form · Supabase · Lucide Icons
 
@@ -36,9 +41,8 @@ you can preview the full experience. To persist responses:
 Share unique links and the invitation greets each guest by name:
 
 ```
-/invite/abdul     ->  "Dear Abdul,"
-/invite/fatima    ->  "Dear Fatima,"
-/invite/guest123  ->  "Dear Guest123,"
+https://dilshad-cg.github.io/dilshad-monique-wedding/invite/abdul   ->  "Dear Abdul,"
+https://dilshad-cg.github.io/dilshad-monique-wedding/invite/fatima  ->  "Dear Fatima,"
 ```
 
 Hyphens/underscores become spaces (`/invite/fatima-bibi` → "Fatima Bibi") and the
