@@ -1,0 +1,259 @@
+/* ============================================================
+   Cinematic theme — keyframes, utility animations & luxury FX
+   ============================================================ */
+
+:root {
+  --gold: #d4af37;
+  --gold-soft: #f5e6c8;
+  --emerald: #1f7a5a;
+  --emerald-bright: #34c98b;
+  --forest: #0c3326;
+  --sage: #9bc2af;
+  --bg: #07120d;
+  --surface: rgba(255, 255, 255, 0.08);
+  --text: #ffffff;
+  --muted: #c4d2c9;
+}
+
+/* ---------- fade-rise family ---------- */
+@keyframes fadeRise {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-rise {
+  opacity: 0;
+  animation: fadeRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.fade-rise-delay {
+  opacity: 0;
+  animation: fadeRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+.fade-rise-delay-2 {
+  opacity: 0;
+  animation: fadeRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+}
+.fade-rise-delay-3 {
+  opacity: 0;
+  animation: fadeRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+}
+
+/* ---------- floating ---------- */
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-18px) translateX(6px);
+  }
+}
+.floating {
+  animation: floating 7s ease-in-out infinite;
+}
+
+/* ---------- gold shimmer ---------- */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+.shimmer-text {
+  background: linear-gradient(
+    100deg,
+    var(--gold-soft) 0%,
+    var(--gold) 25%,
+    #fff7e0 45%,
+    var(--gold) 65%,
+    var(--gold-soft) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+/* Duotone emerald → gold shimmer for accent words */
+.shimmer-emerald {
+  background: linear-gradient(
+    100deg,
+    var(--emerald) 0%,
+    var(--emerald-bright) 22%,
+    var(--gold-soft) 46%,
+    var(--gold) 64%,
+    var(--emerald-bright) 88%,
+    var(--emerald) 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer 7s linear infinite;
+}
+
+/* ---------- cinematic reveal mask ---------- */
+@keyframes revealMask {
+  0% {
+    clip-path: inset(0 0 100% 0);
+    opacity: 0;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+.reveal-mask {
+  animation: revealMask 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ---------- monogram draw (loading screen) ---------- */
+@keyframes drawStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes softGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 22px rgba(212, 175, 55, 0.85));
+  }
+}
+
+/* ---------- particles / petals ---------- */
+@keyframes drift {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-120vh) translateX(40px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) translateX(120px) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+/* botanical leaves drifting upward, swaying side to side */
+@keyframes leafDrift {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-55vh) translateX(-30px) rotate(180deg);
+  }
+  88% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-115vh) translateX(35px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* slow emerald aurora that breathes across the backdrop */
+@keyframes aurora {
+  0% {
+    transform: translate3d(-8%, 0, 0) scale(1.1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate3d(8%, -4%, 0) scale(1.3);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(-8%, 0, 0) scale(1.1);
+    opacity: 0.35;
+  }
+}
+
+/* ---------- light ray sweep ---------- */
+@keyframes raySweep {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: translateX(-10%) rotate(8deg);
+  }
+  50% {
+    opacity: 0.4;
+    transform: translateX(10%) rotate(8deg);
+  }
+}
+
+/* ---------- success check draw ---------- */
+@keyframes checkDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- gentle pulse ---------- */
+@keyframes pulseSoft {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* ---------- divider shimmer line ---------- */
+.divider-line {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(31, 122, 90, 0.6),
+    rgba(212, 175, 55, 0.85),
+    transparent
+  );
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
