@@ -166,7 +166,7 @@
   }
 }
 
-/* botanical leaves drifting upward, swaying side to side */
+/* botanical leaves falling downward, swaying side to side */
 @keyframes leafDrift {
   0% {
     transform: translateY(0) translateX(0) rotate(0deg);
@@ -176,13 +176,13 @@
     opacity: 0.9;
   }
   50% {
-    transform: translateY(-55vh) translateX(-30px) rotate(180deg);
+    transform: translateY(55vh) translateX(-30px) rotate(180deg);
   }
   88% {
     opacity: 0.5;
   }
   100% {
-    transform: translateY(-115vh) translateX(35px) rotate(360deg);
+    transform: translateY(120vh) translateX(35px) rotate(360deg);
     opacity: 0;
   }
 }

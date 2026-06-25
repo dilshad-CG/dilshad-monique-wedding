@@ -29,7 +29,7 @@ export default function Hero({ guestName }: { guestName: string | null }) {
           <span className="fade-rise-delay block text-5xl text-white sm:text-7xl md:text-8xl">
             {WEDDING.groomFirst}
           </span>
-          <span className="shimmer-emerald fade-rise-delay-2 my-2 block text-4xl italic sm:text-6xl">
+          <span className="fade-rise-delay-2 my-2 block text-5xl italic text-gold sm:text-7xl">
             &amp;
           </span>
           <span className="fade-rise-delay-2 block text-5xl text-white sm:text-7xl md:text-8xl">

@@ -36,7 +36,7 @@ export default function Leaves({ count = 10 }: LeavesProps) {
           viewBox="0 0 24 24"
           width={l.size}
           height={l.size}
-          className="absolute bottom-[-12vh]"
+          className="absolute top-[-12vh]"
           style={{
             left: `${l.left}%`,
             opacity: l.opacity,

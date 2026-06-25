@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Loader2, Send, PartyPopper, HeartCrack } from 'lucide-react'
 import Divider from './Divider'
 import SuccessModal from './SuccessModal'
-import { submitRsvp, supabaseEnabled } from '../lib/supabase'
+import { submitRsvp } from '../lib/supabase'
 
 interface FormValues {
   full_name: string
@@ -12,7 +12,6 @@ interface FormValues {
   phone: string
   guests: number
   attending: 'yes' | 'no' | ''
-  dietary_requirements: string
   message: string
 }
 
@@ -51,7 +50,6 @@ export default function RSVP({ guestName }: { guestName: string | null }) {
       phone: '',
       guests: 1,
       attending: '',
-      dietary_requirements: '',
       message: '',
     },
   })
@@ -69,11 +67,12 @@ export default function RSVP({ guestName }: { guestName: string | null }) {
         phone: data.phone.trim(),
         attending: data.attending === 'yes',
         guests: data.attending === 'yes' ? Number(data.guests) : 0,
-        dietary_requirements: data.dietary_requirements.trim() || null,
         message: data.message.trim() || null,
       })
       setShowSuccess(true)
-      reset({ ...data, message: '', dietary_requirements: '' })
+      // Tell the public guest list to refresh.
+      window.dispatchEvent(new CustomEvent('rsvp:submitted'))
+      reset({ ...data, message: '' })
     } catch (err) {
       setServerError(
         'Something went wrong while sending your RSVP. Please try again in a moment.',
@@ -248,18 +247,6 @@ export default function RSVP({ guestName }: { guestName: string | null }) {
 
             <div>
               <label className="mb-2 block text-xs uppercase tracking-[0.2em] text-gold">
-                Dietary Requirements{' '}
-                <span className="text-muted/60">(optional)</span>
-              </label>
-              <input
-                className={`${fieldBase} border-white/10`}
-                placeholder="Halal, vegetarian, allergies…"
-                {...register('dietary_requirements')}
-              />
-            </div>
-
-            <div>
-              <label className="mb-2 block text-xs uppercase tracking-[0.2em] text-gold">
                 Message To The Couple{' '}
                 <span className="text-muted/60">(optional)</span>
               </label>
@@ -295,12 +282,6 @@ export default function RSVP({ guestName }: { guestName: string | null }) {
               </>
             )}
           </button>
-
-          {!supabaseEnabled && (
-            <p className="mt-4 text-center text-[0.7rem] text-muted/60">
-              Demo mode — add Supabase credentials to store responses.
-            </p>
-          )}
         </motion.form>
       </div>
 

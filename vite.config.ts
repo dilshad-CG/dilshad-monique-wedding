@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+// In production the site is served from GitHub Pages at
+// /dilshad-monique-wedding/. Local dev stays at the root.
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/dilshad-monique-wedding/' : '/',
   plugins: [react()],
-})
+}))
