@@ -36,6 +36,9 @@ export default function EventDetails() {
               <CalendarHeart className="text-gold" size={28} />
             </div>
             <h3 className="font-serif text-3xl text-white">Ceremony</h3>
+            <p dir="rtl" lang="ar" className="font-arabic mt-1 text-2xl text-gold">
+              نِكَاح
+            </p>
             <div className="mt-6 space-y-4 text-muted">
               <Row icon={CalendarHeart} label={WEDDING.dateLabel} />
               <Row icon={Clock} label={WEDDING.timeLabel} />
@@ -55,6 +58,9 @@ export default function EventDetails() {
               <GlassWater className="text-gold" size={28} />
             </div>
             <h3 className="font-serif text-3xl text-white">Reception</h3>
+            <p dir="rtl" lang="ar" className="font-arabic mt-1 text-2xl text-gold">
+              وَلِيمَة
+            </p>
             <div className="mt-6 space-y-4 text-muted">
               <Row icon={Clock} label="Immediately Following Ceremony" />
               <Row icon={MapPin} label={`${WEDDING.venue}, ${WEDDING.city}`} />

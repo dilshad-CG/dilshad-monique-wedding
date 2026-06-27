@@ -10,6 +10,17 @@ export default function Hero({ guestName }: { guestName: string | null }) {
       className="relative flex min-h-[100svh] flex-col items-center justify-center px-6 text-center"
     >
       <div className="relative z-10 mx-auto max-w-3xl">
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 1.1, ease: 'easeOut' }}
+          dir="rtl"
+          lang="ar"
+          className="font-arabic shimmer-text mb-8 text-2xl leading-relaxed sm:text-4xl"
+        >
+          بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+        </motion.p>
+
         {guestName && (
           <motion.p
             initial={{ opacity: 0, y: 12 }}

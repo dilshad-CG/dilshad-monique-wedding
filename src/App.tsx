@@ -8,6 +8,7 @@ import Leaves from './components/Leaves'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import Countdown from './components/Countdown'
+import Blessing from './components/Blessing'
 import Story from './components/Story'
 import EventDetails from './components/EventDetails'
 import VenueMap from './components/VenueMap'
@@ -57,6 +58,7 @@ export default function App() {
           <Leaves count={7} />
           <Particles count={14} />
           <Countdown />
+          <Blessing />
           <Story />
           <EventDetails />
           <VenueMap />
