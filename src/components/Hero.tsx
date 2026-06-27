@@ -7,7 +7,7 @@ export default function Hero({ guestName }: { guestName: string | null }) {
   return (
     <section
       id="home"
-      className="relative flex min-h-[100svh] flex-col items-center justify-center px-6 text-center"
+      className="relative flex min-h-[100svh] flex-col items-center justify-center gap-10 px-6 pb-12 pt-28 text-center sm:pt-24"
     >
       <div className="relative z-10 mx-auto max-w-3xl">
         <motion.p
@@ -75,7 +75,7 @@ export default function Hero({ guestName }: { guestName: string | null }) {
         </motion.div>
       </div>
 
-      {/* scroll cue */}
+      {/* scroll cue — in normal flow so it never overlaps the content */}
       <motion.button
         onClick={() =>
           document.querySelector('#countdown')?.scrollIntoView({ behavior: 'smooth' })
@@ -83,7 +83,7 @@ export default function Hero({ guestName }: { guestName: string | null }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 1 }}
-        className="absolute bottom-8 z-10 flex flex-col items-center text-muted hover:text-gold"
+        className="z-10 flex flex-col items-center text-muted hover:text-gold"
         aria-label="Scroll down"
       >
         <span className="text-[0.65rem] uppercase tracking-[0.3em]">Scroll</span>
