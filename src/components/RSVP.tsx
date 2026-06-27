@@ -4,15 +4,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Loader2, Send, PartyPopper, HeartCrack } from 'lucide-react'
 import Divider from './Divider'
 import SuccessModal from './SuccessModal'
-import { submitRsvp } from '../lib/supabase'
+import { submitRsvp } from '../lib/rsvp'
 
 interface FormValues {
   full_name: string
-  email: string
   phone: string
   guests: number
   attending: 'yes' | 'no' | ''
-  message: string
 }
 
 const fieldBase =
@@ -46,11 +44,9 @@ export default function RSVP({ guestName }: { guestName: string | null }) {
   } = useForm<FormValues>({
     defaultValues: {
       full_name: guestName ?? '',
-      email: '',
       phone: '',
       guests: 1,
       attending: '',
-      message: '',
     },
   })
 
@@ -63,16 +59,12 @@ export default function RSVP({ guestName }: { guestName: string | null }) {
     try {
       await submitRsvp({
         full_name: data.full_name.trim(),
-        email: data.email.trim(),
         phone: data.phone.trim(),
         attending: data.attending === 'yes',
         guests: data.attending === 'yes' ? Number(data.guests) : 0,
-        message: data.message.trim() || null,
       })
       setShowSuccess(true)
-      // Tell the public guest list to refresh.
-      window.dispatchEvent(new CustomEvent('rsvp:submitted'))
-      reset({ ...data, message: '' })
+      reset(data)
     } catch (err) {
       setServerError(
         'Something went wrong while sending your RSVP. Please try again in a moment.',
@@ -181,41 +173,20 @@ export default function RSVP({ guestName }: { guestName: string | null }) {
               <ErrorMsg msg={errors.full_name?.message} />
             </div>
 
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div>
-                <label className="mb-2 block text-xs uppercase tracking-[0.2em] text-gold">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  className={`${fieldBase} ${errors.email ? 'border-rose-400/60' : 'border-white/10'}`}
-                  placeholder="you@email.com"
-                  {...register('email', {
-                    required: 'Email is required',
-                    pattern: {
-                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                      message: 'Please enter a valid email',
-                    },
-                  })}
-                />
-                <ErrorMsg msg={errors.email?.message} />
-              </div>
-
-              <div>
-                <label className="mb-2 block text-xs uppercase tracking-[0.2em] text-gold">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  className={`${fieldBase} ${errors.phone ? 'border-rose-400/60' : 'border-white/10'}`}
-                  placeholder="+27 ..."
-                  {...register('phone', {
-                    required: 'Phone number is required',
-                    minLength: { value: 7, message: 'Please enter a valid number' },
-                  })}
-                />
-                <ErrorMsg msg={errors.phone?.message} />
-              </div>
+            <div>
+              <label className="mb-2 block text-xs uppercase tracking-[0.2em] text-gold">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                className={`${fieldBase} ${errors.phone ? 'border-rose-400/60' : 'border-white/10'}`}
+                placeholder="+27 ..."
+                {...register('phone', {
+                  required: 'Phone number is required',
+                  minLength: { value: 7, message: 'Please enter a valid number' },
+                })}
+              />
+              <ErrorMsg msg={errors.phone?.message} />
             </div>
 
             {/* Guests — only when attending */}
@@ -244,19 +215,6 @@ export default function RSVP({ guestName }: { guestName: string | null }) {
                 </motion.div>
               )}
             </AnimatePresence>
-
-            <div>
-              <label className="mb-2 block text-xs uppercase tracking-[0.2em] text-gold">
-                Message To The Couple{' '}
-                <span className="text-muted/60">(optional)</span>
-              </label>
-              <textarea
-                rows={4}
-                className={`${fieldBase} resize-none border-white/10`}
-                placeholder="Share your wishes and blessings…"
-                {...register('message')}
-              />
-            </div>
           </div>
 
           {serverError && (

@@ -13,7 +13,6 @@ import Story from './components/Story'
 import EventDetails from './components/EventDetails'
 import VenueMap from './components/VenueMap'
 import RSVP from './components/RSVP'
-import AttendeeList from './components/AttendeeList'
 import Footer from './components/Footer'
 import { useGuestName } from './hooks/useGuestName'
 
@@ -63,7 +62,6 @@ export default function App() {
           <EventDetails />
           <VenueMap />
           <RSVP guestName={guestName} />
-          <AttendeeList />
           <Footer />
         </div>
       </main>

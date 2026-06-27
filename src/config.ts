@@ -3,10 +3,10 @@ export const WEDDING = {
   brideFirst: 'Monique Julius',
   groomFirst: 'Dilshad Saifi',
   brideAndGroom: 'Monique Julius & Dilshad Saifi',
-  // ISO date-time for the ceremony (SAST, UTC+2)
-  dateISO: '2026-07-18T14:00:00+02:00',
+  // ISO date-time for the reception (SAST, UTC+2)
+  dateISO: '2026-07-18T15:30:00+02:00',
   dateLabel: '18 July 2026',
-  timeLabel: '2:00 PM',
+  timeLabel: '3:30 PM',
   venue: 'The Monarch Hotel',
   city: 'Johannesburg, South Africa',
   // Google Maps query

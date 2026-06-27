@@ -27,9 +27,6 @@ jobs:
       - run: npx tsc -b
       # Force the GitHub Pages sub-path explicitly (overrides any config base)
       - run: npx vite build --base=/dilshad-monique-wedding/
-        env:
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
       # SPA fallback so /invite/:guest deep links resolve on GitHub Pages
       - run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3

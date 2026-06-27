@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Heart, Gem, Sparkles } from 'lucide-react'
+import { Heart, Sparkles } from 'lucide-react'
 import Divider from './Divider'
 
 const CHAPTERS = [
@@ -10,16 +10,10 @@ const CHAPTERS = [
     text: 'Two paths crossed at just the right moment, and a single conversation turned into endless ones. From the very first hello, it felt like the beginning of something timeless.',
   },
   {
-    icon: Gem,
-    title: 'The Engagement',
-    date: 'A Promise Made',
-    text: 'Surrounded by love and a question long awaited, a yes was whispered and sealed with joyful tears. A promise of forever, beautifully made.',
-  },
-  {
     icon: Sparkles,
     title: 'Wedding Celebration',
     date: '18 July 2026',
-    text: 'And now, with hearts full and families gathered, we invite you to witness the next chapter — the day two souls become one, forever.',
+    text: 'And now, with hearts full and families gathered, we invite you to celebrate the next chapter — the day two souls become one, forever.',
   },
 ]
 
@@ -43,14 +37,14 @@ export default function Story() {
           <Divider className="my-8" />
         </motion.div>
 
-        <div className="relative mt-8">
-          {/* center line — emerald to gold */}
-          <span className="absolute left-5 top-0 h-full w-px bg-gradient-to-b from-emerald/0 via-emerald/60 to-gold/0 md:left-1/2" />
+        {/* Unified, centered timeline */}
+        <div className="relative mx-auto mt-4 max-w-xl">
+          {/* single connecting line down the centre */}
+          <span className="absolute left-1/2 top-2 h-full w-px -translate-x-1/2 bg-gradient-to-b from-emerald/0 via-emerald/60 to-gold/0" />
 
-          <div className="space-y-12">
-            {CHAPTERS.map((c, i) => {
+          <div className="space-y-10">
+            {CHAPTERS.map((c) => {
               const Icon = c.icon
-              const left = i % 2 === 0
               return (
                 <motion.div
                   key={c.title}
@@ -58,20 +52,14 @@ export default function Story() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: 0.8, delay: 0.1 }}
-                  className={`relative flex items-start gap-6 md:w-1/2 ${
-                    left ? 'md:ml-0 md:pr-12' : 'md:ml-auto md:flex-row-reverse md:pl-12'
-                  }`}
+                  className="relative flex flex-col items-center text-center"
                 >
-                  {/* node */}
-                  <div className="relative z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-emerald/60 bg-ink shadow-[0_0_18px_rgba(31,122,90,0.45)]">
-                    <Icon size={18} className="text-gold" />
+                  {/* node centred on the line */}
+                  <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-emerald/60 bg-ink shadow-[0_0_18px_rgba(31,122,90,0.45)]">
+                    <Icon size={20} className="text-gold" />
                   </div>
 
-                  <div
-                    className={`glass flex-1 rounded-2xl p-6 ${
-                      left ? 'md:text-right' : 'md:text-left'
-                    }`}
-                  >
+                  <div className="glass mt-5 w-full rounded-2xl p-6">
                     <p className="text-[0.7rem] uppercase tracking-[0.25em] text-gold">
                       {c.date}
                     </p>
