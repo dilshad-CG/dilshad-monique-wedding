@@ -10,6 +10,12 @@ DirectoryIndex index.html
   Require all granted
 </IfModule>
 
+# Keep this private invitation out of search engines (applies to every
+# file and SPA route in this folder).
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>
+
 # SPA routing — deep links such as /wedding-invitation/invite/abdul are
 # served by index.html so React Router can render the personalised greeting.
 <IfModule mod_rewrite.c>
