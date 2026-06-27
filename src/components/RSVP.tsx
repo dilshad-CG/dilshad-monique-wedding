@@ -93,7 +93,7 @@ export default function RSVP({ guestName }: { guestName: string | null }) {
           <p className="mt-4 text-sm text-muted">
             {guestName ? `${guestName}, we` : 'We'} would be honoured by your
             presence. Please reply by{' '}
-            <span className="text-accent">1 July 2026</span>.
+            <span className="text-accent">11 July 2026</span>.
           </p>
           <Divider className="my-8" />
         </motion.div>
